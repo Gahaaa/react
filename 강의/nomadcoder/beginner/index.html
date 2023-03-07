@@ -1,30 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
-    <body>
-        <div id="root"></div>
-        <!-- 2.5 -->
-    </body>
-    <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
-    <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
-    <script>
-        const root = document.getElementById("root");
-        const Title = <h3>Hello I'm a title</h3>
-        // const h3 = React.createElement("h3",
-        // {
-        //     onMouseEnter: () => console.log("mouse enter")
-        // },
-        // "hello," );
-        // const btn =React.createElement("button", 
-        // {
-        //     onClick:()=> console.log("I'm clicked"),
-        //     style:{
-        //         background:"tomato",
-        //     }
-        // },
-        // "Click me");
+  <body>
+    <div id="root"></div>
+  </body>
+  <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script type="text/babel">
+    const root = document.getElementById("root");
+    
+    function App() {
+      const [minutes, setMinutes] = React.useState();
+      const onChange = (event) => {
+        setMinutes(event.target.value)
+      
+      };
 
-        const container = React.createElement("div", null, [h3, btn])
-        ReactDOM.render(container, root);
-        
-    </script>
+      return (
+        <div>
+          <h1>Super Converter</h1>
+          <label htmlFor="minutes">Minutes</label>
+          <input value={minutes} 
+          placeholder="Minutes" 
+          type="number" 
+          id="minutes"
+          onChange={onChange}
+          />
+          <h4>You want to convert {minutes}</h4>
+          <label htmlFor="hours">Hours</label>
+          <input placeholder="Hours" type="number" id="hours"/>
+        </div>
+      );
+    }
+    ReactDOM.render(<App />, root);
+    //2-6
+  </script>
 </html>
