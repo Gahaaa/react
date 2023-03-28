@@ -174,3 +174,116 @@ const root = document.getElementById("root");
 
 - class -> className
 - for -> htmlFor
+
+
+## Props
+```js
+function Btn({text, changeValue}){
+  //이벤트 추가를 위해
+      return <button
+      style={{
+        backgroundColor:"tomato",
+        color:"white",
+        borderRadius:10,
+        padding:"10px 20px",
+        border:"none",
+        fontSize:16,
+        
+      }}
+      onClick={changeValue}
+      >
+        {text}
+        </button>
+    }
+
+
+    function App() {
+      const [vaule, setValue] = React.useState("Save Changes");
+      const changeValue = ()=> setValue("Revert Changes");
+      return (
+        <div>
+          <Btn 
+          text={vaule}
+          changeValue={changeValue}
+          //props일뿐 이벤트가 아니다.
+          />
+          <Btn 
+          text="Confirm"
+          />
+          
+        </div>
+      );
+    }
+
+```
+
+## React.memo
+```js
+function Btn({text, changeValue}){
+      console.log(text, "was rendered")
+      return <button
+      style={{
+        backgroundColor:"tomato",
+        color:"white",
+        borderRadius:10,
+        padding:"10px 20px",
+        border:"none",
+        fontSize:16,
+        
+      }}
+      onClick={changeValue}
+      >
+        {text}
+        </button>
+    }
+
+
+    const MemorizedBtn = React.memo(Btn);
+    function App() {
+      const [vaule, setValue] = React.useState("Save Changes");
+      const changeValue = ()=> setValue("Revert Changes");
+      return (
+        <div>
+          <MemorizedBtn 
+          text={vaule}
+          changeValue={changeValue}
+          />
+          <MemorizedBtn 
+          text="Continue"
+          />
+          
+        </div>
+      );
+    }
+    //console.log(text, "was rendered")
+    //Save Changes was rendered
+    //Continue was rendered
+
+    //클릭시
+    //Revert Changes was rendered
+```
+-> 클릭시 모든 버튼 리랜더링 되는 것이 아니라, 클릭한 버튼만 리렌더링
+
+<br>
+
+## porpType
+
+```html
+  <script src="https://unpkg.com/prop-types@15.7.2/prop-types.js"></script>
+<!-- 
+  콘솔 PropTypes 
+
+-->
+
+```
+
+```js
+Btn.porpTypes ={
+  text: PropTypes.string,
+  fontSize: PropTypes.number
+}
+//props의 타입을 정한 후 벗어나면 콘솔창에 경고를 볼 수 있다.
+```
+1. 리액트는 파라미터를 잘 못 넘겨도 확인할 수 없는 문제점이 존재한다.
+2. 이런 문제를 줄이기 위해서 PropTypes라는 모듈의 도움을 받을 수 있다.
+3. type과 다르게 입력 되엇을 경우 warning을 뜨게 할수 있고, parameter 에 값을 넣지 않는 경우 경고 메시지를 띄울수 있다.
