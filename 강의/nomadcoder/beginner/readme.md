@@ -288,3 +288,58 @@ Btn.porpTypes ={
 1. 리액트는 파라미터를 잘 못 넘겨도 확인할 수 없는 문제점이 존재한다.
 2. 이런 문제를 줄이기 위해서 PropTypes라는 모듈의 도움을 받을 수 있다.
 3. type과 다르게 입력 되엇을 경우 warning을 뜨게 할수 있고, parameter 에 값을 넣지 않는 경우 경고 메시지를 띄울수 있다.
+
+---
+
+<br>
+
+
+## CREATE REACT APP
+
+### 핵심은 분할하고 정복하기 !!
+
+<br>
+
+- 설치 순서
+
+```
+$ nod.js 사용
+$ npx create-react-app react-for-biginners
+$ npm start
+```
+
+```
+$ npm i prop-types
+```
+
+<br>
+
+### css 모듈화
+
+```css
+/*이름 뒤에 .module.css 붙임 */
+.btn{color:#fff;background-color:tomato;}
+```
+
+<br>
+
+```js
+import PropTypes from "prop-types";
+import styles from "./Button.module.css"
+
+function Button({text}){
+    return (
+    <button
+    className={styles.btn}>
+    {/*class 이름 랜덤으로 적용*/}
+        {text}
+    </button>
+    );
+}
+
+Button.propTypes ={
+    text: PropTypes.string.isRequired,
+
+}
+export default Button;
+```
