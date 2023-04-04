@@ -279,10 +279,11 @@ function Btn({text, changeValue}){
 
 ```js
 Btn.porpTypes ={
-  text: PropTypes.string,
-  fontSize: PropTypes.number
+  text: PropTypes.string.isRequired,
+  fontSize: PropTypes.number.isRequired
 }
 //props의 타입을 정한 후 벗어나면 콘솔창에 경고를 볼 수 있다.
+//.isRequired 없으면 에러
 ```
 1. 리액트는 파라미터를 잘 못 넘겨도 확인할 수 없는 문제점이 존재한다.
 2. 이런 문제를 줄이기 위해서 PropTypes라는 모듈의 도움을 받을 수 있다.

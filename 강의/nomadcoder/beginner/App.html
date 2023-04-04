@@ -9,7 +9,8 @@
 	<script src="https://unpkg.com/prop-types@15.7.2/prop-types.js"></script><!--prop-types-->
 
   <script type="text/babel">
-    function Btn({text, fontSize}){
+    function Btn({text, fontSize = 12}){
+      //변수 기본 값 줄 수 있음
       console.log(text, "was rendered")
       return <button
       style={{
@@ -27,8 +28,10 @@
     }
 
     Btn.propTypes ={
-      text: PropTypes.string,
+      text: PropTypes.string.isRequired,
+      //isRequired: 필수적
       fontSize: PropTypes.number,
+      //Btn이 어떤  props를 받는지 검사하는 게 가능하게 도와줌
     }
     function App() {
       const [vaule, setValue] = React.useState("Save Changes");
@@ -40,8 +43,8 @@
           fontSize={18}
           />
           <Btn 
-          text={18}
-          fontSize={"Continue"}
+          // fontSize={16}
+          text={"Continue"}
           />
           
         </div>
