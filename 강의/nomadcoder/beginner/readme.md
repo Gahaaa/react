@@ -343,3 +343,32 @@ Button.propTypes ={
 }
 export default Button;
 ```
+
+<br>
+
+## useEffect
+두 개의 argument를 가지는 function
+1. 딱 한 번만 실행하고 싶은 코드
+2. []
+
+```js
+console.log('I run all the time.');
+//이벤트 일어날 때 계속 실행
+  useEffect(()=>{
+    console.log('CALL THE API');
+  }, [])
+  //첫 번째 불러 올때만 실행 
+```
+
+<br>
+
+```js
+useEffect(()=>{
+    console.log('CALL THE API');
+  }, []);
+  //처음 실행 한 번만
+useEffect(()=>{
+    console.log('search for', keyword);
+  }, [keyword]);
+  //keyword 변화할 때만
+```
